@@ -4,7 +4,7 @@ module SmallFacts.Core.KeyValStore.Effect
   , KeyValStore
   , KVPutResult (..)
   , kvGet
-  , kvPut'
+  , kvGetOrPut
   , kvPut
   -- * Re-exports
   , Algebra
@@ -37,8 +37,8 @@ fromPutResult (KVPutConflict val) = val
 kvGet :: Has (KeyValStoreRead key val) sig m => key -> m (Maybe val)
 kvGet key = send $ KVGet key pure
 
-kvPut' :: Has (KeyValStoreWrite key val) sig m => key -> val -> m (KVPutResult val)
-kvPut' key val = send $ KVPut key val pure
+kvPut :: Has (KeyValStoreWrite key val) sig m => key -> val -> m (KVPutResult val)
+kvPut key val = send $ KVPut key val pure
 
-kvPut :: Has (KeyValStoreWrite key val) sig m => key -> val -> m val
-kvPut key val = fromPutResult <$> kvPut' key val
+kvGetOrPut :: Has (KeyValStoreWrite key val) sig m => key -> val -> m val
+kvGetOrPut key val = fromPutResult <$> kvPut key val
