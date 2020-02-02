@@ -1,4 +1,4 @@
-name:                SmallFacts
+name:                SmallFacts-Core
 version:             0.1.0.0
 github:              "gusbicalho/SmallFacts"
 author:              "Gustavo Bicalho"
@@ -11,7 +11,6 @@ defaults:
   local: ../defaults.yaml
 
 dependencies:
-- SmallFacts-Core
 - base >= 4.7 && < 5
 - fused-effects
 - text
@@ -20,7 +19,7 @@ library:
   source-dirs: src
 
 tests:
-  SmallFacts-test:
+  SmallFacts-Core-test:
     main:                Spec.hs
     source-dirs:         test
     ghc-options:
@@ -28,7 +27,7 @@ tests:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - SmallFacts
+    - SmallFacts-Core
     - base
     - hspec
     - QuickCheck

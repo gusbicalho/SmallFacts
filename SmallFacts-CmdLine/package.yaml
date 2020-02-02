@@ -1,0 +1,48 @@
+name:                SmallFacts-CmdLine
+version:             0.1.0.0
+github:              "gusbicalho/SmallFacts-CmdLine"
+author:              "Gustavo Bicalho"
+maintainer:          "gusbicalho@gmail.com"
+copyright:           "2020 Gustavo Bicalho"
+
+description:         Please see the README on GitHub at <https://github.com/gusbicalho/SmallFacts-CmdLine#readme>
+
+defaults:
+  local: ../defaults.yaml
+
+dependencies:
+- SmallFacts
+- base >= 4.7 && < 5
+- fused-effects
+- optparse-applicative
+- text
+
+library:
+  source-dirs: src
+
+executables:
+  SmallFacts-CmdLine-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -O2
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - SmallFacts-CmdLine
+
+tests:
+  SmallFacts-CmdLine-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - SmallFacts-CmdLine
+    - base
+    - hspec
+    - QuickCheck
+    - text
