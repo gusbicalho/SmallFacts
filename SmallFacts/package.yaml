@@ -1,0 +1,47 @@
+name:                SmallFacts
+version:             0.1.0.0
+github:              "gusbicalho/SmallFacts"
+author:              "Gustavo Bicalho"
+maintainer:          "gusbicalho@gmail.com"
+copyright:           "2020 Gustavo Bicalho"
+
+description:         Please see the README on GitHub at <https://github.com/gusbicalho/SmallFacts#readme>
+
+defaults:
+  local: ../defaults.yaml
+
+dependencies:
+- base >= 4.7 && < 5
+- fused-effects
+- optparse-applicative
+- text
+
+library:
+  source-dirs: src
+
+executables:
+  SmallFacts-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -O2
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - SmallFacts
+
+tests:
+  SmallFacts-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - SmallFacts
+    - base
+    - hspec
+    - QuickCheck
+    - text
