@@ -12,9 +12,12 @@ defaults:
 
 dependencies:
 - base >= 4.7 && < 5
+- bytestring
 - fused-effects
+- lens
 - text
 - uuid
+- vector
 
 library:
   source-dirs: src
